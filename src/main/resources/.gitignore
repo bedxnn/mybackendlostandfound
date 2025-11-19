@@ -33,7 +33,7 @@ build/
 .vscode/
 target/
 .idea/
-*.iml
+
 
 # Do NOT commit credentials
 src/main/resources/application.properties
