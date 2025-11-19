@@ -1,44 +1,68 @@
 package com.find.lostandfound;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 @Entity
 public class lost_items {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id private Long id;
+    private Long id;
+    private String userId;
 
-    private String userName;
+
+    private String student_id;
+
+    private String name;
     private String description;
-    private String image;
-    private boolean claimed = false;
     private String location;
 
+    private boolean claimed = false;
 
     public lost_items() {
     }
 
-
-    public lost_items( String description, String image,String userName, String location){
-
-        this.image = image;
-        this.description=description;
-        this.location = location;
-        this.userName = userName;
-
-
-    }
-
-    public long getId(){
+    // Getters & Setters
+    public Long getId() {
         return id;
     }
-
-    public void setId(long id){
-        this.id=id;
-
+    public String getUserId() {
+        return userId;
     }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+    public String getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(String student_id) {
+       this . student_id = student_id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
     public String getLocation(){
         return location;
     }
@@ -50,30 +74,8 @@ public class lost_items {
     public boolean isClaimed() {
         return claimed;
     }
+
     public void setClaimed(boolean claimed){
         this.claimed = claimed;
     }
-
-    public String getDescription(){
-        return description;
-    }
-    public void setDescription(String description){
-        this.description=description;
-    }
-    public String getImage(){
-        return image;
-    }
-    public void setImage(String image){
-        this.image=image;
-
-    }
-
-    public String getUserName(){
-        return userName;
-    }
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-
-    }
-
+}
