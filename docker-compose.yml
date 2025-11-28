@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: lostandfound-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: lostandfound
+    ports:
+      - "5435:5432"
+    networks:
+      - backend
+
+  app:
+    image: my-spring-app
+    container_name: lostandfound-app
+    ports:
+      - "9090:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/lostandfound
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - backend
+
+networks:
+  backend:
